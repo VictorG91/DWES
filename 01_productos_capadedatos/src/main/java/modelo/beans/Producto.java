@@ -7,15 +7,13 @@ public class Producto {
 	private int idProducto;
 	private String descripcion;
 	private double precioUnidad;
-	private Date fechaAlta;
 	private Familia familia;
 	
-	public Producto(int idProducto, String descripcion, double precioUnidad, Date fechaAlta, Familia familia) {
+	public Producto(int idProducto, String descripcion, double precioUnidad, Familia familia) {
 		super();
 		this.idProducto = idProducto;
 		this.descripcion = descripcion;
 		this.precioUnidad = precioUnidad;
-		this.fechaAlta = fechaAlta;
 		this.familia = familia;
 	}
 
@@ -45,14 +43,6 @@ public class Producto {
 
 	public void setPrecioUnidad(double precioUnidad) {
 		this.precioUnidad = precioUnidad;
-	}
-
-	public Date getFechaAlta() {
-		return fechaAlta;
-	}
-
-	public void setFechaAlta(Date fechaAlta) {
-		this.fechaAlta = fechaAlta;
 	}
 
 	public Familia getFamilia() {
@@ -86,7 +76,7 @@ public class Producto {
 	@Override
 	public String toString() {
 		return "Producto [idProducto=" + idProducto + ", descripcion=" + descripcion + ", precioUnidad=" + precioUnidad
-				+ ", fechaAlta=" + fechaAlta + ", familia=" + familia + "]";
+				+ ", familia=" + familia + "]";
 	}
 	
 	
