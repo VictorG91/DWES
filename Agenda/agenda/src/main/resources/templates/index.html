@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contactos</title>
+</head>
+
+<body>
+    <h1>Agenda de Contactos</h1>
+    <!-- Formulario para añadir un nuevo contacto -->
+    <h2>Añadir Nuevo Contacto</h2>
+    <form action="/addContact" method="post">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="phone">Teléfono:</label>
+        <input type="text" id="phone" name="phone" required><br><br>
+        <button type="submit">Añadir Contacto</button>
+    </form>
+
+    <form action="/searchContact" method="post">
+        <label for="name">Nombre:</label>
+        <input type="text" id="searchName" name="searchName" required><br><br>
+        <button type="submit">Buscar Contacto</button>
+    </form>
+
+    <!-- Listado de contactos -->
+    <h2>Contactos</h2>
+    <ul id="contactList">
+        <th:block th:each="contacto : ${contactList}">
+            <li th:text="${contacto.name} + ' - Telefono: ' + ${contacto.phone}"></li>
+        </th:block>
+    </ul>
+    <!-- Formulario para eliminar un contacto -->
+    <h2>Eliminar Contacto</h2>
+    <form action="/deleteContact" method="post">
+        <label for="id">ID del Contacto:</label>
+        <input type="text" id="id" name="id" required><br><br>
+        <button type="submit">Eliminar Contacto</button>
+    </form>
+</body>
+
+</html>
