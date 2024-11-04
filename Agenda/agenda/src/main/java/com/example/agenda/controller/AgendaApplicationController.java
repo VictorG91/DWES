@@ -24,15 +24,19 @@ public class AgendaApplicationController {
         return "index";
     }
 
-    @GetMapping("/searchContact")
-    public Contacto getContacto(@RequestParam ("searchName") String name, Model model) {
+    @PostMapping("/searchContact")
+    public String getContacto(@RequestParam ("searchName") String name, Model model) {
+        Contacto contactoEncontrado = null;
         for (Contacto contact : contactos) {
             if (contact.getName().equals(name)) {
-                return contact;
+                contactoEncontrado = contact;
             }
-            
         }
-        return null;
+
+        model.addAttribute("contactList", contactos);
+        model.addAttribute("contactDetail", contactoEncontrado);
+
+        return "index";
     }
 
     @PostMapping("/addContact")
@@ -47,18 +51,15 @@ public class AgendaApplicationController {
         return "index";
     }
 
-    @DeleteMapping("/deleteContact")
-    public String deleteContacto(@RequestParam ("id") String name, Model model) {
-        boolean exist = false;
+    @PostMapping("/deleteContact")
+    public String deleteContacto(@RequestParam ("name") String name, Model model) {
+        Contacto contactoEncontrado = null;
         for (Contacto contact : contactos) {
             if (contact.getName().equals(name)) {
-                exist = true;
+                contactoEncontrado = contact;
             }
         }
-        
-        if(exist == true){
-            contactos.remove(contacto);
-        }
+        contactos.remove(contactoEncontrado);
         model.addAttribute("contactList", contactos);
 
         return "index";
