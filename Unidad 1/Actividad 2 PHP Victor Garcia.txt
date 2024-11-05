@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<body>
+<pre>
+
+<?php
+//Ejercicio 1
+$nombres = array("Carlos", "Ana", "Roberto", "Laura", "Sofia");
+
+print_r($nombres);
+
+echo "<br><br>";
+//Ejercicio 2
+function contarCaracteres($nombres) {
+    $caracteres = 0;
+    foreach ($nombres as $nombre) {
+        $caracteres += strlen($nombre);
+    }
+    return $caracteres;
+}
+$caracteres = contarCaracteres($nombres);
+echo "La cantidad total de caracteres es " . $caracteres;
+
+echo "<br><br>";
+//Ejercicio 3
+$letra = 0;
+function contarLetras($nombres, $letra) {
+    $conteo = 0;
+    foreach ($nombres as $nombre) {
+        $conteo += substr_count(strtolower($nombre), strtolower($letra));
+    }
+    return $conteo;
+}
+
+$letra = "r"; 
+$vecesLetra = contarLetras($nombres, $letra);
+echo "La letra " . $letra . " aparece " . $vecesLetra . " veces";
+
+echo "<br><br>";
+//Ejercicio 4
+function contarVocCons($nombres) {
+    $vocales = "aAeEiIoOuU";
+    $totalVocales = 0;
+    $totalConsonantes = 0;
+    
+    foreach ($nombres as $nombre) {
+        for ($i = 0; $i < strlen($nombre); $i++) {
+            if (strpos($vocales, $nombre[$i]) !== false) {
+                $totalVocales++;
+            } elseif (ctype_alpha($nombre[$i])) {
+                $totalConsonantes++;
+            }
+        }
+    }
+    
+    return array('vocales' => $totalVocales, 'consonantes' => $totalConsonantes);
+}
+
+$conteoVocalesConsonantes = contarVocCons($nombres);
+echo "La cantidad de vocales es " . $conteoVocalesConsonantes['vocales'];
+echo "<br>";
+echo "La cantidad total de consonantes es " . $conteoVocalesConsonantes['consonantes'];
+
+echo "<br><br>";
+//Ejercicio 5
+function encontrarNombres($nombres) {
+    $nombreLargo = "";
+    $nombreCorto = $nombres[0];
+
+    foreach ($nombres as $nombre) {
+        if (strlen($nombre) > strlen($nombreLargo)) {
+            $nombreLargo = $nombre;
+        }
+        if (strlen($nombre) < strlen($nombreCorto)) {
+            $nombreCorto = $nombre;
+        }
+    }
+
+    return array('largo' => $nombreLargo, 'corto' => $nombreCorto);
+}
+
+$nombresLargosCortos = encontrarNombres($nombres);
+echo "El nombre más largo es '" . $nombresLargosCortos['largo'] . "' con " . strlen($nombresLargosCortos['largo']) . " caracteres";
+echo "<br>";
+echo "El nombre más corto es '" . $nombresLargosCortos['corto'] . "' con " . strlen($nombresLargosCortos['corto']) . " caracteres";
+?>
+
+</pre>
+</body>
+</html>

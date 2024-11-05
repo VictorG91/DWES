@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+//Ejercicio 1
+$num1 = 14;
+$num2 = 30;
+$suma = $num1 + $num2;
+
+echo "El resultado de la suma de " . $num1 . " y " . $num2 . " es " . $suma;
+
+echo("<br><br>");
+
+//Ejercicio 2
+$a = 30;
+$b = 30;
+
+if ($a > $b){
+	echo "El número " . $a . " es mayor";
+}
+if ($a < $b){
+	echo "El número " . $b . " es mayor";
+}
+if ($a == $b){
+	echo "Los números " . $a . " y " . $b ." son iguales";
+}
+echo("<br><br>");
+//Ejercicio 3
+$saludo = "Hola Mundo ";
+$nombre = "Estoy usando PHP";
+
+$texto = $saludo . $nombre;
+
+echo ($texto);
+
+echo("<br><br>");
+
+//Ejercicio 4
+$frutas = array("manzana", "pera", "platano", "kiwi", "melocoton");
+echo $frutas[2];
+
+echo("<br><br>");
+//Ejercicio 5
+for($i = 1; $i<6; $i++){
+	echo $i;
+}
+
+echo("<br><br>");
+//Ejercicio 6
+$num = 2;
+if ($num%2 == 0){
+	echo "El número es par";
+} else {
+	echo "El número es impar";
+}
+
+echo("<br><br>");
+//Ejercicio 7
+$cadena = "Esto es una cadena de texto";
+echo "La cadena de texto contiene " . strlen($cadena) . " palabras";
+
+echo("<br><br>");
+//Ejercicio 8
+$multiplica = 1;
+$numeros = array(5, 7, 3, 1, 20);
+foreach($numeros as $numero){
+	$multiplica *=$numero;
+}
+echo "La multiplicación de todos los números es " . $multiplica;
+
+echo("<br><br>");
+//Ejercicio 9
+function factorial(){
+	$fact = 5;
+  	$valor = 5;
+ 	for($i = 1; $i<$fact; $i++){
+      	$valor = $valor * $i;
+  	}
+ 	echo "El valor factorial de " . $fact . " es " . $valor;
+}
+
+factorial();
+
+echo("<br><br>");
+//Ejercicio 10
+$x = "Esta es mi primera experiencia con PHP";
+$y = explode(" ", $x);
+
+print_r($y);
+
+echo "<br><br>";
+  
+sort($y, SORT_NATURAL | SORT_FLAG_CASE);
+
+$clength = count($y);
+for($x = 0; $x < $clength; $x++) {
+  echo $y[$x];
+  echo "<br>";
+}
+
+echo("<br><br>");
+//Ejercicio 11
+$arrayNumeros = array(8, 7, 4, 2, 6);
+
+function calcularPromedio($arrayNumeros){
+	$suma = 0;
+    $promedio = 0;
+	foreach($arrayNumeros as $numero){
+    	$suma += $numero;
+    }
+    $promedio = $suma / count($arrayNumeros);
+    echo "El promedio es " . $promedio;
+}
+
+calcularPromedio($arrayNumeros);
+
+?> 
+
+</body>
+</html>
+

@@ -1,9 +1,7 @@
+package modelo;
 import modelo.beans.Familia;
 import modelo.daos.FamiliaListImpl;
 import modelo.daos.IntFamilia;
-import modelo.beans.Producto;
-import modelo.daos.IntProductos;
-import modelo.daos.ProductosListImpl;
 
 
 public class TestFamiliaDao {

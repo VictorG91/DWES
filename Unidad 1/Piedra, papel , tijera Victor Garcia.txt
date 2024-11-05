@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$saludo = "Bienvenido al juego 'Piedra, papel o tijera'";
+$reglas = "<br><br>Para eligir piedra pulsar la tecla P.
+<br>Para elegir papel pulsar la tecla L.
+<br>Para elegir tijera pulsar la tecla T.
+<br>Para salir pulsa la tecla S.";
+
+echo $saludo;
+echo $reglas;
+
+$jugador = "L";
+
+do{
+  $x = rand(1, 3);
+
+
+  switch ($jugador) {
+    case "P":
+      echo "<br><br>Jugador ha elegido Piedra";
+      if($x == 1){
+          echo "<br>El ordenador escogió Piedra";
+          echo "<br>Empate";
+      }
+      if($x == 2){
+          echo "<br>El ordenador escogió Papel";
+          echo "<br>Gana el ordenador";
+      }
+      if($x == 3){
+          echo "<br>El ordenador escogió Tijera";
+          echo "<br>Gana el jugador";
+      }
+      break;
+    case "L":
+      echo "<br><br>Jugador ha elegido Papel";
+      if($x == 1){
+          echo "<br>El ordenador escogió Piedra";
+          echo "<br>Gana el jugador";
+      }
+      if($x == 2){
+          echo "<br>El ordenador escogió Papel";
+          echo "<br>Empate";
+      }
+      if($x == 3){
+          echo "<br>El ordenador escogió Tijera";
+          echo "<br>Gana el ordenador";
+      }
+      break;
+    case "T":
+      echo "<br><br>Jugador ha elegido Tijera";
+      if($x == 1){
+          echo "<br>El ordenador escogió Piedra";
+          echo "<br>Gana el ordenador";
+      }
+      if($x == 2){
+          echo "<br>El ordenador escogió Papel";
+          echo "<br>Gana el jugador";
+      }
+      if($x == 3){
+          echo "<br>El ordenador escogió Tijera";
+          echo "<br>Empate";
+      }
+      break;
+     case "S":
+      echo "<br><br>Saliendo del programa";
+      break;
+    default:
+      echo "<br>No has elegido ninguna de las opciones válidas";
+  }
+
+    
+} while ($jugador != "S");
+
+?>  
+
+</body>
+</html>

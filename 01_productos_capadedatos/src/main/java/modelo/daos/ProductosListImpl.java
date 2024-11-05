@@ -21,44 +21,57 @@ public class ProductosListImpl implements IntProductos{
 		lista.add(new Producto(3, "Tablet", 180, new Familia(2, "Pantalon")));
 		lista.add(new Producto(4, "Portatil", 1200, new Familia(2, "Pantalon")));
 		lista.add(new Producto(5, "Kindle", 159, new Familia(3, "Jersey")));
-		
-		
 	}
 	
 	@Override
 	public Producto findById(int idProducto) {
-		// TODO Auto-generated method stub
-		return null;
+		Producto aux = new Producto();
+		aux.setIdProducto(idProducto);
+		int pos = lista.indexOf(aux);
+		if(pos == -1)
+			return null;
+		else
+			return lista.get(pos);
 	}
 
 	@Override
 	public List<Producto> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return lista;
 	}
 
 	@Override
 	public int altaProducto(Producto producto) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(lista.contains(producto))
+			return 0;
+		else
+			return lista.add(producto)?1:0;
 	}
 
 	@Override
 	public int modificarProducto(Producto producto) {
-		// TODO Auto-generated method stub
-		return 0;
+		int pos = lista.indexOf(producto);
+		if(pos == -1)
+			return 0;
+		else
+			return (lista.set(pos, producto) !=null)?1:0;
 	}
 
 	@Override
 	public int eliminarProducto(Producto producto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return lista.remove(producto)?1:0;
 	}
 
 	@Override
 	public int eliminarProducto(int idProducto) {
-		// TODO Auto-generated method stub
-		return 0;
+		Producto aux = new Producto();
+		aux.setIdProducto(idProducto);
+		int pos = lista.indexOf(aux);
+		if(pos == -1)
+			return 0;
+		else
+			
+		return (lista.remove(pos) !=null)?1:0;
 	}
 
 	@Override
