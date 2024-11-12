@@ -59,7 +59,13 @@ public class HaciendaApplicationController {
                 morosoEncontrado = moroso;
             }
         }
-        
+        morosos.remove(morosoEncontrado);
+        Moroso morosoActualizado = new Moroso(nombre, deuda, dias);
+        morosos.add(morosoActualizado);
+
+        model.addAttribute("morososLista", morosos);
+
+        return "index";
     }
 
 
