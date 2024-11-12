@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+//Ejercicio 1
+$num1 = 14;
+$num2 = 30;
+$multiplicacion = $num1 * $num2;
+
+echo "El resultado de la multiplicacion de " . $num1 . " y " . $num2 . " es " . $multiplicacion;
+
+echo("<br><br>");
+
+//Ejercicio 2
+$ciudades = array("Madrid", "Bruselas", "Londres", "Lisboa", "Paris");
+
+foreach ($ciudades as $ciudad) {
+	echo $ciudad;
+    echo "<br>";
+}
+
+echo "<br><br>";
+
+//Ejercicio 3
+$suma = 0;
+$numeros = array(5, 7, 3, 1, 20);
+foreach($numeros as $numero){
+	$suma +=$numero;
+}
+echo "La suma de todos los números es " . $suma;
+
+echo("<br><br>");
+//Ejercicio 4
+$cadena = "Esto es una cadena de texto";
+echo strtolower($cadena);
+echo "<br>";
+echo "La cadena de texto contiene " . strlen($cadena) . " caracteres";
+
+echo("<br><br>");
+
+//Ejercicio 5
+$arrNumeros = array(4, 7, 12, 1, 20);
+foreach($arrNumeros as $numero){
+	if($numero%2==0){
+    	echo $numero;
+        echo "<br>";
+    }
+}
+
+echo("<br><br>");
+
+//Ejercicio 5
+$empleados = array (
+  array("Victor",22000,"Desarrollo"),
+  array("Marina",30000,"Recursos Humanos"),
+  array("Aitor",27000,"Administracion"),
+);
+
+for ($row = 0; $row < 3; $row++) {
+  echo "<p><b>Empleado numero $row</b></p>";
+  echo "<ul>";
+    for ($col = 0; $col < 3; $col++) {
+      echo "<li>".$empleados[$row][$col]."</li>";
+    }
+  echo "</ul>";
+}
+
+echo("<br><br>");
+
+$salarioTotal = 0;
+for ($row = 0; $row < 3; $row++) {
+	$salarioTotal +=$empleados[$row][1];
+}
+echo "El salario total de todos los empleados es " .$salarioTotal;
+
+echo("<br><br>");
+?>
+
+</body>
+</html>

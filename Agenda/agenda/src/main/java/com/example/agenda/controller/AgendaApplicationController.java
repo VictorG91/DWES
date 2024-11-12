@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,7 +25,7 @@ public class AgendaApplicationController {
         return "index";
     }
 
-    @PostMapping("/searchContact")
+    @GetMapping("/searchContact")
     public String getContacto(@RequestParam ("searchName") String name, Model model) {
         Contacto contactoEncontrado = null;
         for (Contacto contact : contactos) {
@@ -43,16 +44,27 @@ public class AgendaApplicationController {
     public String postContact(@RequestParam("name") String name,
                             @RequestParam("phone") String phone, Model model){
         
+        boolean contactoExiste = false;
+        for (Contacto contact : contactos) {
+            if (contact.getName().equals(name)) {
+                contactoExiste = true;
+            }
+        }
+        if(contactoExiste == true){
+            model.addAttribute("contactList", contactos);
+            return "index";
+        } else {
         Contacto contacto = new Contacto(name, phone);
         contactos.add(contacto);
-
+            
         model.addAttribute("contactList", contactos);
 
         return "index";
+        }
     }
 
     @PostMapping("/deleteContact")
-    public String deleteContacto(@RequestParam ("name") String name, Model model) {
+    public String deleteContacto(@RequestParam("name") String name, Model model) {
         Contacto contactoEncontrado = null;
         for (Contacto contact : contactos) {
             if (contact.getName().equals(name)) {
