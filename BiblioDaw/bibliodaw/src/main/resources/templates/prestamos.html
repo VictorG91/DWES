@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Préstamos</title>
+</head>
+<body>
+    <h1>Gestión de Préstamos</h1>
+
+    <form action="/addPrestamo" method="post">
+        <h 2>Registrar Nuevo Préstamo</h2>
+        <input type="text" name="usuario" placeholder="Usuario" required>
+        <input type="date" name="fechaPrestamo" required>
+        <select name="libroId" required>
+            <option value="">Seleccione un libro</option>
+            <th:block th:each="libro : ${libros}">
+                <option th:value="${libro.id}" th:text="${libro.titulo}"></option>
+            </th:block>
+        </select>
+        <button type="submit">Registrar Préstamo</button>
+    </form>
+
+    <h2>Lista de Préstamos</h2>
+    <ul>
+        <th:block th:each="prestamo : ${prestamos}">
+            <li>
+                <span th:text="${prestamo.usuario}">Usuario</span> - 
+                <span th:text="${prestamo.fechaPrestamo}">Fecha de Préstamo</span> - 
+                <form action="/deletePrestamo" method="post" style="display:inline;">
+                    <input type="hidden" name="id" th:value="${prestamo.id}"/>
+                    <button type="submit">Eliminar</button>
+                </form>
+            </li>
+        </th:block>
+    </ul>
+</body>
+</html>
